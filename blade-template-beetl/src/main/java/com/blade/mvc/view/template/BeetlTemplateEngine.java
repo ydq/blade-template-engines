@@ -9,6 +9,8 @@ import com.blade.mvc.http.Session;
 import com.blade.mvc.ui.ModelAndView;
 import com.blade.mvc.ui.template.DefaultEngine;
 import com.blade.mvc.ui.template.TemplateEngine;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.beetl.core.Configuration;
 import org.beetl.core.GroupTemplate;
@@ -25,7 +27,9 @@ import java.util.Map;
 public class BeetlTemplateEngine implements TemplateEngine {
 
     private static final String        DEFAULT_ENCODING = "UTF-8";
+    @Setter
     private              String        suffix           = ".html";
+    @Getter
     private              GroupTemplate groupTemplate;
 
     public BeetlTemplateEngine(Blade blade) {
@@ -86,14 +90,6 @@ public class BeetlTemplateEngine implements TemplateEngine {
 
     public BeetlTemplateEngine(GroupTemplate groupTemplate) {
         this.groupTemplate = groupTemplate;
-    }
-
-    public GroupTemplate getGroupTemplate() {
-        return groupTemplate;
-    }
-
-    public void setSuffix(String suffix) {
-        this.suffix = suffix;
     }
 
     @Override
